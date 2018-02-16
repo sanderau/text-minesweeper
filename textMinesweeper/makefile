@@ -1,3 +1,11 @@
+#############################################################
+# Author: Austin Sanders
+# File: makefile
+# Date: 2.15.18
+# Description: This makes all my poorly written code into an exe
+# Notes: none
+#############################################################
+
 SRC = main.cpp cell.cpp board.cpp
 HDR = board.hpp cell.hpp
 

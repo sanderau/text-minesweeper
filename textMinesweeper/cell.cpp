@@ -1,3 +1,11 @@
+/************************************************************
+* Author: Austin Sanders
+* File: cell.cpp
+* Date: 2.15.18
+* Description: This contains the cell implementation
+* Notes: none
+*************************************************************/
+
 /*Standard libraries*/
 #include <iostream>
 /*My terribly written libraries*/
