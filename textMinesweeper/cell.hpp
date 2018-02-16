@@ -1,3 +1,5 @@
+#define DEBUGGER false // this will display all true values of board making the debugging process easier. Set to true for all values to be shown.
+
 #ifndef CELL_HPP
 #define CELL_HPP
 
@@ -19,7 +21,9 @@ public:
 
 	/* setters */
 	void setDisplay(char); // if the cell is not a bomb this function will set the value of the display (How many bombs are adjecent to it)
-	void isPicked(); // only run once when the value is picked by player, makes it so it will display its true value form now on.
+	bool setPicked(); // only run once when the value is picked by player, makes it so it will display its true value form now on.
+	void setBomb(); //when initializing the board this funciton will be called to set this cell to a mine
+
 };
 
 #endif

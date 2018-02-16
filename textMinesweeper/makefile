@@ -1,5 +1,5 @@
-SRC = main.cpp cell.cpp
-HDR = cell.hpp
+SRC = main.cpp cell.cpp board.cpp
+HDR = board.hpp cell.hpp
 
 make:
 	g++ $(SRC) $(HDR) -o run

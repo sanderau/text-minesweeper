@@ -7,12 +7,15 @@
 Cell::Cell()
 /******************************************
 * Function: default constructor
-* description: I will never use this
+* description: I will use this, disregard previous comments
 * Params: none
-* warnings: none
+* warnings: When initialized all cells will be not bombs. the creation of the board must deal with adding bombs to the game.
 *******************************************/
 {
-	std::cout << "This is from inside the cell classes default constructor. If you see this my creator messed up somewhere" << std::endl;
+	this->hidden = 'o';
+	this->picked = DEBUGGER;
+	this->mine = false;
+	this->shown = 'e'; 
 }
 
 Cell::Cell(bool b)
@@ -73,13 +76,36 @@ void Cell::setDisplay(char s)
 	shown = s;
 }
 
-void Cell::isPicked()
+bool Cell::setPicked()
 /******************************************
-* Function: isPicked
+* Function: setPicked
 * Description: sets picked to true
+* Params: none
+* warnings: none
+* return: true if set to true, false if already set to true
+*******************************************/
+{
+	if(this->picked)
+	//if already picked return an error
+	{
+		return false;
+	}
+
+	else
+	{
+		this->picked = true;
+		return true;
+	}
+}
+
+void Cell::setBomb()
+/******************************************
+* Function: setBomb
+* Description: when creating the board it will set this value to a bomb
 * Params: none
 * warnings: none
 *******************************************/
 {
-	picked = true;
+	this->mine = true;
+	this->shown = 'x';
 }
