@@ -71,6 +71,33 @@ bool Game::pickCell(struct Coord c)
 	return board->setPicked(c);
 }
 
+void Game::playerMove()
+/***************************************************
+* Function: playerMove
+* Description: gets a move from the player
+* params: none
+* warnings: I need to flush something because once this
+ ** is called after initializing the game the first time
+ ** there is already something in the dang buffer.
+***************************************************/
+{
+	fflush(stdin);
+	fflush(stdout);
+	std::cout << "\n" << std::flush;//flush input output to avoid getline error
+
+	std::string input;
+	struct Coord c;
+	c.x = c.y = -1;
+	
+	while(c.x == -1 and c.y == -1)
+	{
+		std::cout << "Which cell: ";
+		std::getline(std::cin, input); // get input from user
+
+		c = validMove(input); // see if it is a valid move
+	}
+}
+
 /*Getters*/
 void Game::displayBoard()
 /***************************************************
@@ -171,4 +198,74 @@ bool isNum(std::string in)
 	}
 
 	return true;
+}
+
+
+struct Coord Game::validMove(std::string in)
+{
+	struct Coord c;
+	for(int i = 0; i < in.length(); i++)
+	{
+		if((in.at(i) > 57 or in.at(i) < 48) and (in.at(i) != 32))
+		// if the value isnt a number or a space
+		{
+			std::cout << "Unexpected value in string" << std::endl;
+			c.x = c.y = -1;
+			return c; // return a failure
+		}
+	}
+
+	std::istringstream iss(in);
+
+	int tok = 0; // number of tokens should not exceed 2
+
+	do
+	//convert the string into numbers I can interpret
+	{
+	//	std::cout << "number of tokens: " << tok << std::endl;
+
+		std::string sub;
+		iss >> sub;
+
+	//	std::cout << "Current substring: " << sub << std::endl;
+
+		if(tok == 0)
+		{
+			c.x = atoi(sub.c_str());
+			tok++;
+		}
+
+		else if(tok == 1)
+		{
+			c.y = atoi(sub.c_str());
+			tok++;
+		}
+
+		else if(tok >= 3)
+		{
+	//		std::cout << "Unexpected amount of values" << std::endl;
+			c.x = c.y = -1; // return an error
+			return c; // too many values
+		}
+
+	}while(iss);
+
+
+	if(c.x-1 > board->getRows() or c.y-1 > board->getCols())
+	// if an out of bounds error return error
+	{
+		std::cout << "Out of bounds error" << std::endl;
+		c.x = c.y = -1;
+		return c;
+	}
+
+	else if(c.x-1 < 0 or c.y-1 < 0)
+	//other out of bounds case
+	{
+		std::cout << "Out of bounds error" << std::endl;
+		c.x = c.y = -1;
+		return c;
+	}
+
+	return c; // passes all tests return valid value
 }

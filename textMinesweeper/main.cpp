@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 	while(!(game.isGameOver()))
 	{
 		game.displayBoard();
-		//game.playerMove(); // implement this next
+		game.playerMove(); // implement this next
 		//game.checkGame(); // implement this after
 	}
 

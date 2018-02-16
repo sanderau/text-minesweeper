@@ -8,6 +8,9 @@
 /*standard libs*/
 #include <stdlib.h>
 #include <stdio.h>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /*My libraries*/
 #include "board.hpp"
@@ -21,7 +24,6 @@ enum gameState {won, lost};
 struct Coord toCoord(int,int);
 int numRows();
 int numCols();
-
 bool isNum(std::string);
 
 
@@ -45,11 +47,15 @@ public:
 	
 	//setter
 	bool pickCell(struct Coord c);
+	void playerMove();
 
 	//getter
 	void displayBoard();
 	bool isMine(struct Coord);
 	bool isGameOver();
+
+	//helper
+	struct Coord validMove(std::string);
 };
 
 #endif
