@@ -52,6 +52,9 @@ public:
 	bool setPicked(struct Coord c);
 	//getters
 	void displayBoard();
+	int getRows();
+	int getCols();
+	bool isMine(struct Coord);
 };
 
 #endif

@@ -145,6 +145,41 @@ void Board::displayBoard()
 	}
 }
 
+int Board::getRows()
+/*********************************************
+* function: get rows
+* Description: get the number of rows board has
+* Params: none
+* Warnings: none
+**********************************************/
+{
+	return this->rows;
+}
+
+
+int Board::getCols()
+/*********************************************
+* function: getCols()
+* Description: get the number of cols board has
+* Params: none
+* Warnings: none
+**********************************************/
+{
+	return this->cols;
+}
+
+bool Board::isMine(struct Coord c)
+/*********************************************
+* function: isMine()
+* Description: returns wether or not the cell is a mine
+* Params: none
+* Warnings: none
+**********************************************/
+{
+	return grid[c.x][c.y].isBomb();
+}
+
+/* Helper functions*/
 
 void getSpace(int v)
 /************************************************

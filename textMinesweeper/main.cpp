@@ -10,13 +10,19 @@
 #include <iostream>
 
 /*I'm sorry for how poorly written these are */
-#include "board.hpp"
+#include "game.hpp"
 
 int main(int argc, char *argv[])
 {
-	Board b(10,11);
+	//initialize the first game
+	Game game(numRows(), numCols());	
 	
-	b.displayBoard();
+	while(!(game.isGameOver()))
+	{
+		game.displayBoard();
+		//game.playerMove(); // implement this next
+		//game.checkGame(); // implement this after
+	}
 
 	return 0;
 }

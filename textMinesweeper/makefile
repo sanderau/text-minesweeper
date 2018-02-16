@@ -6,8 +6,9 @@
 # Notes: none
 #############################################################
 
-SRC = main.cpp cell.cpp board.cpp
-HDR = board.hpp cell.hpp
+SRC = main.cpp cell.cpp board.cpp game.cpp
+
+HDR = board.hpp cell.hpp game.hpp
 
 make:
 	g++ $(SRC) $(HDR) -o run
