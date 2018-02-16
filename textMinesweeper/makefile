@@ -13,5 +13,8 @@ HDR = board.hpp cell.hpp game.hpp
 make:
 	g++ $(SRC) $(HDR) -o run
 
+num: 
+	wc ${SRC} ${HDR}
+
 clean:
 	rm -f run
