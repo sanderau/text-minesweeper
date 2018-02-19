@@ -6,15 +6,25 @@
 # Notes: none
 #############################################################
 
-SRC = main.cpp cell.cpp board.cpp game.cpp
+CFLAGS = -Wall -fpic -coverage -lm
 
-HDR = board.hpp cell.hpp game.hpp
+cell.o: cell.hpp cell.cpp
+	g++ -c cell.cpp -g $(CFLAGS)
 
-make:
-	g++ $(SRC) $(HDR) -o run
+board.o: board.hpp board.cpp cell.o
+	g++ -c board.cpp -g $(CFLAGS)
 
+game.o: game.hpp game.cpp board.o
+	g++ -c game.cpp -g $(CFLAGS)
+
+#just type "make main" to compile the code
+main: main.cpp game.o
+	g++ -o runGame main.cpp -g cell.o board.o game.o $(CFLAGS)
+
+#no functionality, this is just to see how many lines of code there are inside of this project
 num: 
 	wc ${SRC} ${HDR}
 
+#type "make clean" to get rid of all files besides source code and makefile
 clean:
-	rm -f run
+	rm -f runGame *.o *.gcno *.gcda
