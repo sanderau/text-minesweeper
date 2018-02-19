@@ -1,9 +1,9 @@
 /************************************************************
-* Author: Austin Sanders
+* Author: Austin Sanders 
 * File: game.cpp
 * Date: 2.16.18
 * Description: This is the implementation for the game class
-* Notes: none
+* Notes: none 
 *************************************************************/
 
 /*Well written libraries*/
@@ -90,12 +90,15 @@ void Game::playerMove()
 	c.x = c.y = -1;
 	
 	while(c.x == -1 and c.y == -1)
+	//keep prompting the user for which cell they want until they give valid input
 	{
 		std::cout << "Which cell: ";
 		std::getline(std::cin, input); // get input from user
 
 		c = validMove(input); // see if it is a valid move
 	}
+
+	//they now have a valid move 
 }
 
 /*Getters*/
@@ -232,13 +235,11 @@ struct Coord Game::validMove(std::string in)
 		if(tok == 0)
 		{
 			c.x = atoi(sub.c_str());
-			tok++;
 		}
 
 		else if(tok == 1)
 		{
 			c.y = atoi(sub.c_str());
-			tok++;
 		}
 
 		else if(tok >= 3)
@@ -247,6 +248,8 @@ struct Coord Game::validMove(std::string in)
 			c.x = c.y = -1; // return an error
 			return c; // too many values
 		}
+		
+		tok++;
 
 	}while(iss);
 
