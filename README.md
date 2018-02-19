@@ -12,6 +12,3 @@ Update your repo:
 
 Check what files you updated:
 * git status
-
-
-yolo
