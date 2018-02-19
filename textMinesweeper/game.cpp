@@ -192,7 +192,7 @@ int numCols()
 
 bool isNum(std::string in)
 {
-	for(int i = 0; i < in.length(); i++)
+	for(unsigned int i = 0; i < in.length(); i++) //unsigned int so the compiler doesnt lose its mind
 	{
 		if(in.at(i) > 57 or in.at(i) < 48)
 		{
@@ -207,7 +207,7 @@ bool isNum(std::string in)
 struct Coord Game::validMove(std::string in)
 {
 	struct Coord c;
-	for(int i = 0; i < in.length(); i++)
+	for(unsigned int i = 0; i < in.length(); i++)
 	{
 		if((in.at(i) > 57 or in.at(i) < 48) and (in.at(i) != 32))
 		// if the value isnt a number or a space

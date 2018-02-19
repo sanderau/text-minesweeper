@@ -109,8 +109,6 @@ void Board::displayBoard()
 * Warnings: none
  ************************************************/
 {
-	struct Coord c;
-
 	getSpace(0);
 
 	for(int c = 1; c <= cols; c++)
