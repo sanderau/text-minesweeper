@@ -25,6 +25,10 @@ struct Coord
 	int y;
 };
 
+//enums to make setting the difficulty easier
+
+enum diff {easy=0, medium, hard};
+
 class Board
 {
 private:

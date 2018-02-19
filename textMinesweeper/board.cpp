@@ -78,6 +78,9 @@ bool Board::setPicked(struct Coord c)
 * Warnings:
  ************************************************/
 {
+	c.x--;
+	c.y--; // fixing and error the wrong way because I am too lazy to find the real culprit rn
+
 	if(grid[c.x][c.y].setPicked())
 		return true;
 

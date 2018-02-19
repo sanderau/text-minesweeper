@@ -28,6 +28,7 @@ Game::Game()
 	//with no constructor the game will automatically set the 
 	// rows and cols to 10
 	board = new Board(10,10);
+
 }
 
 Game::Game(int r, int c)
@@ -97,6 +98,10 @@ void Game::playerMove()
 
 		c = validMove(input); // see if it is a valid move
 	}
+
+	this->board->setPicked(c);
+
+	std::cout << std::string(100, '\n');
 
 	//they now have a valid move 
 }
@@ -171,6 +176,8 @@ int numRows()
 	}
 
 	int r = atoi(input.c_str());
+
+	std::cout << std::string(100, '\n');
 
 	return r;
 }
