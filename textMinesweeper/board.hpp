@@ -10,6 +10,7 @@
 #include <string>
 /*Mine*/
 #include "cell.hpp"
+#include "rngs.h"
 
 #ifndef BOARD_HPP
 #define BOARD_HPP
@@ -27,7 +28,7 @@ struct Coord
 
 //enums to make setting the difficulty easier
 
-enum diff {easy=0, medium, hard};
+enum Difficulty {Easy=0, Medium, Hard};
 
 class Board
 {
@@ -35,6 +36,7 @@ private:
 	Cell **grid;
 	int rows;
 	int cols;
+	double difficulty; // diffuclty of the game
 
 	std::string space;
 
@@ -50,6 +52,7 @@ public:
 	/* Constuctors destructors*/
 	Board(); // default constructor
 	Board(int, int); // creates the board with a user defined number of rows and 
+	Board(int, int, Difficulty);
 	~Board();
 
 	//setters

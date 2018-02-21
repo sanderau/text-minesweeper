@@ -15,8 +15,9 @@
 int main(int argc, char *argv[])
 {
 	//initialize the first game
-	Game game(numRows(), numCols());	
-	
+	Game game;	
+	game.initialize();
+
 	while(!(game.isGameOver()))
 	{
 		game.displayBoard();

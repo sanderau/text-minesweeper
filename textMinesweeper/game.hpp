@@ -39,6 +39,9 @@ private:
 	bool gameOver;
 	enum gameState gs;
 
+	/*helper functions*/
+	enum Difficulty toEnum(int);
+
 public:
 	/*Constructor Destructor*/
 	Game();

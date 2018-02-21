@@ -8,13 +8,16 @@
 
 CFLAGS = -Wall -fpic -coverage -lm
 
+rngs.o: rngs.h rngs.c
+	gcc -c rngs.c -g $(CFLAGS)
+
 cell.o: cell.hpp cell.cpp
 	g++ -c cell.cpp -g $(CFLAGS)
 
-board.o: board.hpp board.cpp cell.o
+board.o: board.hpp board.cpp cell.o rngs.o
 	g++ -c board.cpp -g $(CFLAGS)
 
-game.o: game.hpp game.cpp board.o
+game.o: game.hpp game.cpp board.o rngs.o
 	g++ -c game.cpp -g $(CFLAGS)
 
 #just type "make main" to compile the code

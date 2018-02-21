@@ -47,6 +47,49 @@ Board::Board(int r, int c)
 	}
 }
 
+Board::Board(int r, int c, Difficulty diff)
+/***********************************************
+* Function: Board(int, int, Difficulty)
+* Description: constructor for board, size r rows and c cols, and populates the board according to difficulty
+* Params: int r - rows; int c - cols
+* warnings: none
+***********************************************/
+{
+	switch(diff)
+	//diff is the variable that refers to what percent of the board
+	//is going to be mines. 
+	//Example: 10x10 board = 100 possible spaces; Easy difficulty = 15% bombs; therefore the board will have 15 random bomb spaces
+	{
+		case Easy:
+			difficulty = .15;
+		case Medium:
+			difficulty = .20;
+		case Hard:
+			difficulty = .25;
+	}
+
+	/*
+	* Task: difficulty will contain the percentage of the board that is bombs
+	* find out how many bombs that is, then program an algorithm that will
+	* populate the board with that many bombs. Each bomb must contain a 
+	* unique position, so the board will always be populated with that many
+	* bombs
+	*/
+
+	/*
+	* Extra task: As you may or may not know the included "random" functions
+	* inside of c++ are psuedorandom, as in they are not truly random, and if
+	* someone really wanted to, they could predict where the bombs will be using a set
+	* of knowns. To prevent this hypothetical hacker from making our game ez. I have
+	* included two files rngs.h rngs.c that include function that make random 
+	* numbers that are closer to truly random. Use their random functions when making the board, to make the positions
+	* truly random. Do not worry too much about implementation, just learn how to use the
+	* functions. These programs have been around since the 90's so they are pretty well documented on the internet.
+	* They are written in C however, so when using them use C's nomenclature.
+	* Also don't worry about compilation and linking, I will update the makefile accordingly. Good luck.
+	*/
+}
+
 
 Board::~Board()
 /***********************************************

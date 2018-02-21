@@ -55,8 +55,15 @@ void Game::initialize()
 * Warnings: none, yet.
 **************************************************/
 {
-
-
+	std::string input;
+	do {
+		std::cout << "1. Easy\n2. Medium\n3. Hard\nWhat difficulty would you like: ";
+		std::getline(std::cin, input);
+	}while(input.at(0) != 49 && input.at(0) != 50 && input.at(0)); // keep asking for input while it doesnt equal 1, 2, 3
+	
+	board = new Board(numRows(), numCols(), toEnum(atoi(input.c_str())-1)); //oh boy this really isn't needed, but I sure do like bells and whistles
+	//also I think I remember someone telling me dont put function calls in parameters, but what do they know?
+	//it looks cool and that is all that matters in programming.
 }
 
 Game::~Game()
@@ -175,6 +182,32 @@ struct Coord toCoord(int r, int c)
 	temp.y = c-1;
 
 	return temp;
+}
+
+
+/**********************HELPER FUNCTIONS*************************/
+
+enum Difficulty Game::toEnum(int d)
+/******************************************************
+ * Function: toEnum(int)
+ * Description: takes an int and turns it into its corresponding enum
+ * Param: int to turn into enum
+ * Warnings: This is probably not needed
+ ******************************************************/
+{
+	Difficulty diff;
+
+	switch(d) // turn the input into a enum that the board class will understand
+	{
+		case 0: 
+			diff = Easy;
+		case 1:
+			diff = Medium;
+		case 2:
+			diff = Hard;
+	}
+
+	return diff;
 }
 
 int numRows()
