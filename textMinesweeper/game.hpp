@@ -44,6 +44,7 @@ public:
 	Game();
 	Game(int,int);
 	~Game();
+	void initialize();
 	
 	//setter
 	bool pickCell(struct Coord c);

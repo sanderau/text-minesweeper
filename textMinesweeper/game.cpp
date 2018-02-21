@@ -47,6 +47,18 @@ Game::Game(int r, int c)
 	board = new Board(r,c);
 }
 
+void Game::initialize()
+/**************************************************
+* Function: initialize
+* Description: initializes a game
+* params: none
+* Warnings: none, yet.
+**************************************************/
+{
+
+
+}
+
 Game::~Game()
 /***************************************************
 * Function: ~Game

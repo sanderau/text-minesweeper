@@ -9,7 +9,7 @@
 
 #include <iostream>
 
-/*I'm sorry for how poorly written these are */
+/*I'm sorry for how poorly written these are*/
 #include "game.hpp"
 
 int main(int argc, char *argv[])
