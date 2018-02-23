@@ -5,17 +5,11 @@
 * Description: This contains the board class
 * Notes: none
 *************************************************************/
-/*well written libraries*/
-#include <iostream>
-#include <stdlib.h>
-#include <math.h>
-#include <string>
-/*Mine*/
-#include "cell.hpp"
-#include "rngs.h"
-
 #ifndef BOARD_HPP
 #define BOARD_HPP
+
+//the one library i have to include
+#include "cell.hpp"
 
 /*helper funcitons*/
 void getSpace(int); // writes the correct amount of space to the board
@@ -60,6 +54,7 @@ public:
 	//setters
 	bool setPicked(struct Coord c);
 	//getters
+	int numBombs(); // debugging function to make sure that the board has the correct number of bombs
 	void displayBoard();
 	int getRows();
 	int getCols();

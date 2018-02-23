@@ -8,6 +8,11 @@
 
 /*Well written libraries*/
 #include <iostream>
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+#include <sstream>
+#include <string>
 
 /*I'm sorry*/
 #include "game.hpp"
@@ -60,10 +65,15 @@ void Game::initialize()
 		std::cout << "1. Easy\n2. Medium\n3. Hard\nWhat difficulty would you like: ";
 		std::getline(std::cin, input);
 	}while(input.at(0) != 49 && input.at(0) != 50 && input.at(0)); // keep asking for input while it doesnt equal 1, 2, 3
-	
-	board = new Board(numRows(), numCols(), toEnum(atoi(input.c_str())-1)); //oh boy this really isn't needed, but I sure do like bells and whistles
+
+	int c = numCols();
+	int r = numRows();
+
+
+	board = new Board(r, c, toEnum(atoi(input.c_str())-1)); //oh boy this really isn't needed, but I sure do like bells and whistles
 	//also I think I remember someone telling me dont put function calls in parameters, but what do they know?
 	//it looks cool and that is all that matters in programming.
+
 }
 
 Game::~Game()
@@ -116,6 +126,7 @@ void Game::playerMove()
 		std::getline(std::cin, input); // get input from user
 
 		c = validMove(input); // see if it is a valid move
+
 	}
 
 	this->board->setPicked(c);
@@ -201,11 +212,15 @@ enum Difficulty Game::toEnum(int d)
 	{
 		case 0: 
 			diff = Easy;
+			break;
 		case 1:
 			diff = Medium;
+			break;
 		case 2:
 			diff = Hard;
+			break;
 	}
+
 
 	return diff;
 }

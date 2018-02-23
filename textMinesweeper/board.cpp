@@ -6,8 +6,15 @@
 * Notes: none
 *************************************************************/
 
-/*file I am modifying*/
+/*well written libraries*/
+#include <iostream>
+#include <stdlib.h>
+#include <math.h>
+#include <string>
+/*Mine*/
 #include "board.hpp"
+#include "cell.hpp"
+#include "rngs.h"
 
 
 
@@ -55,6 +62,7 @@ Board::Board(int r, int c, Difficulty diff)
 * warnings: none
 ***********************************************/
 {
+
 	switch(diff)
 	//diff is the variable that refers to what percent of the board
 	//is going to be mines. 
@@ -62,10 +70,13 @@ Board::Board(int r, int c, Difficulty diff)
 	{
 		case Easy:
 			difficulty = .15;
+			break;
 		case Medium:
 			difficulty = .20;
+			break;
 		case Hard:
 			difficulty = .25;
+			break;
 	}
 	
 	//Initialize size and format variables.
@@ -249,6 +260,28 @@ bool Board::isMine(struct Coord c)
 	return grid[c.x][c.y].isBomb();
 }
 
+int Board::numBombs()
+/**********************************************
+ * function: numBombs()
+ * description: returns the number of bombs on the board 
+  **using for debugging
+ * params: none
+ * warnings: none
+ *********************************************/
+ {
+	int numBombs = 0;
+	for(int r = 0; r < this->rows; r++)
+	{
+		for(int c = 0; c < this->cols; c++)
+		{
+			if(this->grid[r][c].isBomb())
+				numBombs++;
+		}
+	}
+
+	return numBombs;
+ }
+
 /* Helper functions*/
 
 void getSpace(int v)
@@ -288,3 +321,5 @@ int numDigits(int v)
 
 	return digits;
 }
+
+

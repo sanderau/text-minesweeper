@@ -5,13 +5,6 @@
 * Description: This contains the game class
 * Notes: none
 *************************************************************/
-/*standard libs*/
-#include <stdlib.h>
-#include <stdio.h>
-#include <iostream>
-#include <sstream>
-#include <string>
-
 /*My libraries*/
 #include "board.hpp"
 
