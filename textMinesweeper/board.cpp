@@ -6,14 +6,8 @@
 * Notes: none
 *************************************************************/
 
-/*well written libraries*/
-#include <iostream>
-#include <stdlib.h>
-#include <math.h>
-/*My libraries*/
+/*file I am modifying*/
 #include "board.hpp"
-#include "cell.hpp"
-#include "rngs.h"
 
 
 
@@ -94,13 +88,12 @@ Board::Board(int r, int c, Difficulty diff)
 		//SelectStream(rand() % 256); //I decided to use both just to make things extra random.
 		int randRow = fmod(rand(),r);
 		int randCol = fmod(rand(),c);
-		if(!grid[randCol][randRow].isBomb()){
+		if(!(grid[randCol][randRow].isBomb())){
 			grid[randCol][randRow].setBomb();
 			bombs--;
 		}
 	}
 	
-	std::cout<< "this shit actually works lmao what" << std::endl;
 	/*
 	* Task: difficulty will contain the percentage of the board that is bombs
 	* find out how many bombs that is, then program an algorithm that will

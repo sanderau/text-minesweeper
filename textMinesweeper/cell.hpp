@@ -6,7 +6,7 @@
 * Notes: none
 *************************************************************/
 
-#define DEBUGGER false // this will display all true values of board making the debugging process easier. Set to true for all values to be shown.
+#define DEBUGGER true // this will display all true values of board making the debugging process easier. Set to true for all values to be shown.
 
 #ifndef CELL_HPP
 #define CELL_HPP

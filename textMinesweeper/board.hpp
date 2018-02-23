@@ -5,8 +5,10 @@
 * Description: This contains the board class
 * Notes: none
 *************************************************************/
-/*Standard libraries*/
+/*well written libraries*/
 #include <iostream>
+#include <stdlib.h>
+#include <math.h>
 #include <string>
 /*Mine*/
 #include "cell.hpp"
