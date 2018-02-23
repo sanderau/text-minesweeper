@@ -1,5 +1,5 @@
 /************************************************************
-* Author: Austin Sanders
+* Author: Austin Sanders, William Crumpton
 * File: board.cpp
 * Date: 2.16.18
 * Description: This contains the implementation for the board class
@@ -8,8 +8,14 @@
 
 /*well written libraries*/
 #include <iostream>
+#include <stdlib.h>
+#include <math.h>
 /*My libraries*/
 #include "board.hpp"
+#include "cell.hpp"
+#include "rngs.h"
+
+
 
 /*Constructors and destructors*/
 Board::Board()
@@ -67,7 +73,34 @@ Board::Board(int r, int c, Difficulty diff)
 		case Hard:
 			difficulty = .25;
 	}
-
+	
+	//Initialize size and format variables.
+	space = "   ";
+	this->rows = r;
+	this->cols = c;
+	
+	//Initialize the 2D grid array with Cell objects.
+	grid = new Cell*[rows];
+	for(int i = 0; i < rows; i++) {
+		grid[i] = new Cell[cols];
+	}
+	
+	//The number of bombs is calculated by taking the total number of cells and multiplying it by the difficulty ratio
+	int bombs = r*c*difficulty;
+	
+	//PlantSeeds(rand() % 696969); //this plants a random ammount of magic random number beans
+	//possible methods of randomizing bomb placement.
+	while(bombs > 0){
+		//SelectStream(rand() % 256); //I decided to use both just to make things extra random.
+		int randRow = fmod(rand(),r);
+		int randCol = fmod(rand(),c);
+		if(!grid[randCol][randRow].isBomb()){
+			grid[randCol][randRow].setBomb();
+			bombs--;
+		}
+	}
+	
+	std::cout<< "this shit actually works lmao what" << std::endl;
 	/*
 	* Task: difficulty will contain the percentage of the board that is bombs
 	* find out how many bombs that is, then program an algorithm that will
