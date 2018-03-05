@@ -8,12 +8,16 @@
 *************************************************************/
 
 #include <iostream>
+#include <stdlib.h>
+#include <time.h>
 
 /*I'm sorry for how poorly written these are*/
 #include "game.hpp"
 
 int main(int argc, char *argv[])
 {
+	srand(time(NULL));
+
 	//initialize the first game
 	Game game;	
 	game.initialize();

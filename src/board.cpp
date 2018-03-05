@@ -95,16 +95,20 @@ Board::Board(int r, int c, Difficulty diff)
 	
 	//PlantSeeds(rand() % 696969); //this plants a random ammount of magic random number beans
 	//possible methods of randomizing bomb placement.
+//	std::cout << "Bombs at: [";
 	while(bombs > 0){
 		//SelectStream(rand() % 256); //I decided to use both just to make things extra random.
 		int randRow = fmod(rand(),r);
 		int randCol = fmod(rand(),c);
 		if(!(grid[randCol][randRow].isBomb())){
+//			std::cout << " (" << randCol << ", "<< randRow << ") ";
 			grid[randCol][randRow].setBomb();
 			bombs--;
 		}
 	}
 	
+//		std::cout << "] " << std::endl;
+
 	/*
 	* Task: difficulty will contain the percentage of the board that is bombs
 	* find out how many bombs that is, then program an algorithm that will
@@ -126,19 +130,24 @@ Board::Board(int r, int c, Difficulty diff)
 	* Also don't worry about compilation and linking, I will update the makefile accordingly. Good luck.
 	*/
 
+
 	for(int i = 0; i < this->rows; i++)
 	{
 		for(int j = 0; j < this->cols; j++)
 		{
 			if(!(grid[i][j].isBomb()))
 			{
+			//	std::cout << "Setting up cell @ " << i << ", " << j;
 				struct Coord c;
 				c.x = i;
 				c.y = j;
 				grid[i][j].setDisplay(numOfBombsAround(c)+48);
+			//	std:: cout << " | Here is the display char: " << disChar << std::endl;
 			}
 		}
 	}
+
+//	std::cout << "All done!" << std::endl;
 }
 
 
@@ -200,22 +209,32 @@ char Board::getDisplay(struct Coord c)
 
 int Board::numOfBombsAround(struct Coord coord)
 /****************************************************
- * Function: numOfBombsAround()
+ * Function numOfBombsAround()
  * Description: returns the number of bombs around passed Coord
  * Params: struct Coord c - the cell to eval
  * Warnings: none
  ****************************************************/
 {
 	int numBombs=0;
+//	std::cout << "Coordinates to test @ (" << coord.x << " , " << coord.y << ")" << ": [";
 
 	for(int r = coord.x-1; r <= coord.x+1; r++)
 	{
 		for(int c = coord.y-1; c <= coord.y+1; c++)
 		{
-			if((r > 0 && c > 0) && (r != coord.x && c != coord.y) && (grid[r][c].isBomb()))
-				numBombs++;
+			if((r >= 0 && c >= 0) && ( r < this->rows && c < this->cols ))
+			{
+//				std::cout << "( " << r << ", " << c << ")";
+				if(this->grid[r][c].isBomb())
+				{
+//					std::cout << ", B ";
+					numBombs++;
+				}
+			}
 		}
 	}
+
+//	std::cout << "]" << std::endl;
 
 	return numBombs;
 

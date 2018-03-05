@@ -130,8 +130,17 @@ void Game::playerMove()
 	}
 
 	this->board->setPicked(c);
+	if(this->board->isMine(c))
+	{
+		std::cout << "this is bomb" << std::endl;
+	}
 
-	std::cout << std::string(100, '\n');
+	else
+	{
+		std::cout << "This is not bomb" << std::endl;
+	}
+
+//	std::cout << std::string(100, '\n');
 
 	//they now have a valid move 
 }
@@ -237,7 +246,7 @@ int numRows()
 
 	int r = atoi(input.c_str());
 
-	std::cout << std::string(100, '\n');
+//	std::cout << std::string(100, '\n');
 
 	return r;
 }
