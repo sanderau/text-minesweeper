@@ -147,7 +147,6 @@ Board::Board(int r, int c, Difficulty diff)
 		}
 	}
 
-//	std::cout << "All done!" << std::endl;
 }
 
 
@@ -181,15 +180,13 @@ bool Board::setPicked(struct Coord c)
 * Warnings:
  ************************************************/
 {
-	c.x--;
-	c.y--; // fixing and error the wrong way because I am too lazy to find the real culprit rn
-
+//	std::cout << "Coordinates given in set picked function: " << c.x << ", " << c.y << std::endl;
 	if(grid[c.x][c.y].setPicked())
 		return true;
 
 	else
 	{
-		std::cout << "You have already picked this cell" << std::endl;
+//		std::cout << "You have already picked this cell" << std::endl;
 		return false;
 	}
 }

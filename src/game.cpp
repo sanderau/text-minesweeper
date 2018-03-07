@@ -129,20 +129,15 @@ void Game::playerMove()
 
 	}
 
+
 	this->board->setPicked(c);
+
 	if(this->board->isMine(c))
 	{
-		std::cout << "this is bomb" << std::endl;
+		this->gameOver = true;
 	}
 
-	else
-	{
-		std::cout << "This is not bomb" << std::endl;
-	}
-
-//	std::cout << std::string(100, '\n');
-
-	//they now have a valid move 
+	std::cout << std::string(100, '\n');
 }
 
 /*Getters*/
@@ -345,6 +340,10 @@ struct Coord Game::validMove(std::string in)
 		c.x = c.y = -1;
 		return c;
 	}
+
+	c.x -= 1;
+	c.y -= 1;
+
 
 	return c; // passes all tests return valid value
 }
