@@ -15,8 +15,7 @@ enum gameState {won, lost};
 
 /*Helper functions*/
 struct Coord toCoord(int,int);
-int numRows();
-int numCols();
+int numColsOrRows(std::string);
 bool isNum(std::string);
 
 

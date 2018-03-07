@@ -66,14 +66,11 @@ void Game::initialize()
 		std::getline(std::cin, input);
 	}while(input.at(0) != 49 && input.at(0) != 50 && input.at(0)); // keep asking for input while it doesnt equal 1, 2, 3
 
-	int c = numCols();
-	int r = numRows();
 
-
-	board = new Board(r, c, toEnum(atoi(input.c_str())-1)); //oh boy this really isn't needed, but I sure do like bells and whistles
+	board = new Board(numColsOrRows("rows"), numColsOrRows("cols"), toEnum(atoi(input.c_str())-1)); //oh boy this really isn't needed, but I sure do like bells and whistles
 	//also I think I remember someone telling me dont put function calls in parameters, but what do they know?
 	//it looks cool and that is all that matters in programming.
-
+	std::cout << std::string(100, '\n'); //clear screen
 }
 
 Game::~Game()
@@ -229,32 +226,22 @@ enum Difficulty Game::toEnum(int d)
 	return diff;
 }
 
-int numRows()
-{
-	std::string input = "abc";
 
-	while(!(isNum(input)))
-	{
-		std::cout << "How many rows in this game: ";
-		std::cin >> input;
-	}
-
-	int r = atoi(input.c_str());
-
-//	std::cout << std::string(100, '\n');
-
-	return r;
-}
-
-int numCols()
+int numColsOrRows(std::string in)
+/****************************************************
+ * Function: numCols
+ * Params: none
+ * Description: asks user the number of cols or rows they want
+ * Warning: none
+ ****************************************************/
 {	
-	std::string input = "abc";
+	std::string input;
 
-	while(!(isNum(input)))
+	do
 	{
-		std::cout << "How many cols in this game: ";
+		std::cout << "How many " << in << " in this game: ";
 		std::cin >> input;
-	}
+	}while(!(isNum(input)));
 
 	int c = atoi(input.c_str());
 
@@ -262,6 +249,12 @@ int numCols()
 }
 
 bool isNum(std::string in)
+/******************************************
+ * Function: isNum
+ * param: string to test
+ * description: tests to see if value is all made of numbers
+ * Warnings: does not account for spaces
+ ********************************************/
 {
 	for(unsigned int i = 0; i < in.length(); i++) //unsigned int so the compiler doesnt lose its mind
 	{
@@ -276,6 +269,12 @@ bool isNum(std::string in)
 
 
 struct Coord Game::validMove(std::string in)
+/*****************************************************
+ * Function: validMove
+ * params: string input with input to test
+ * Description: tests to see if the user input is valid
+ * Warnings: none
+ *****************************************************/
 {
 	struct Coord c;
 	for(unsigned int i = 0; i < in.length(); i++)
